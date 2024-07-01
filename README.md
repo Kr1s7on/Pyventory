@@ -6,7 +6,7 @@ An inventory management system in Python. And yes the words *Python* and *invent
 
 ## Additional Features (Planned)
 
-Besides the standard CRUD functionalities, these are something extra:
+Besides the standard CRUD functionalities and the additional features mentioned in the [assignment brief](AssignmentBrief.pdf), these are something extra:
 
 - **Search Engine:** Implement a search functionality for products.
 - **Login (Basic):** Add a basic login page for user authentication.

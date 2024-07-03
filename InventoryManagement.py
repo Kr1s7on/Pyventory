@@ -38,6 +38,7 @@ def add_product(products):
     # Input name with validation
     while True:
         name = input("Enter Product Name: ")
+        # When name is empty
         if name == "":
             print("Product Name cannot be empty. Please enter a name.")
 
@@ -54,6 +55,7 @@ def add_product(products):
     # Input description with validation
     while True:
         description = input("Enter Description: ")
+        # When desc is empty
         if description == "":
             print("Description cannot be empty. Please enter a description.")
 
@@ -134,11 +136,13 @@ def update_product(products):
             category = input(f"Category {CATEGORIES} [{product['Category']}]: ") or product['Category']
             if category in CATEGORIES:
                 break
+
             print("Invalid category. Please choose from the list.")
 
-            description = input(f"Description [{product['Description']}]: ") or product['Description']
+        # Input description
+        description = input(f"Description [{product['Description']}]: ") or product['Description']
 
-        # Input description with validation
+        # Input price with validation
         while True:
             price_input = input(f"Price [{product['Price']}]: ") or str(product['Price'])
             try:

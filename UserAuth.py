@@ -18,7 +18,7 @@
 import getpass
 
 # File path for passwords
-PASSWORDS_FILE = "passwords.txt"
+PASSWORDS_FILE = ".passwords.txt"
 
 def login():
     """

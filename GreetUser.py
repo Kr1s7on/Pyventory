@@ -35,7 +35,7 @@ def greet_user():
 
     elif hour < 18:
         greeting = "\nGood afternoon!"
-        
+
     else:
         greeting = "\nGood evening!"
 

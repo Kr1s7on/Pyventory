@@ -21,10 +21,6 @@ from SearchEngine import search_product
 from UserAuth import login
 from GreetUser import greet_user
 
-# File paths for data and passwords
-PRODUCTS_FILE = "products.csv"
-PASSWORDS_FILE = "passwords.txt"
-
 def main():
     """
     Main function to run Pyventory.

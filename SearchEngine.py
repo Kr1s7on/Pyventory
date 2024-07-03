@@ -21,6 +21,14 @@ def search_product(products):
     Args:
         products (list): List of dictionaries containing the product info.
     """
+
+    # ANSI escape code for colors, extra marks for user experience pls
+    yellow_gold_text = "\033[93m"
+    red_text = "\033[91m"
+
+    # ANSI escape code to reset color
+    reset = "\033[0m"
+
     # Check whether there is any product in the inventory, no prod = return
     if not products:
         print("No products in inventory.")
@@ -35,7 +43,7 @@ def search_product(products):
             ]
 
     if results:
-        print("\n==== Search Results ====")
+        print(yellow_gold_text + "\n==== Search Results ====" + reset)
         for product in results:
             # ID
             print(f"\nProduct ID: {product['Product ID']}")
@@ -49,6 +57,7 @@ def search_product(products):
             print(f"Price: ${product['Price']:.2f}")
             # Quantity
             print(f"Quantity Available: {product['Quantity Available']}")
-            print("\n========================")
+            print(yellow_gold_text + "\n========================" + reset)
+
     else:
-        print("No products found matching the search term.")
+        print(red_text + "No products found matching the search term." + reset)

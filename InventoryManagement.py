@@ -99,7 +99,7 @@ def update_product(products):
     Args:
         products (list): List of dictionaries containing product information.
     """
-    # Validation for wheen thers no productsin the csv
+    # Validation for when thers no products in the csv
     if not products:
         print("No products in inventory.")
         return
@@ -135,7 +135,7 @@ def update_product(products):
             if category in CATEGORIES:
                 break
             print("Invalid category. Please choose from the list.")
-            
+
             description = input(f"Description [{product['Description']}]: ") or product['Description']
 
         # Input description with validation
@@ -178,16 +178,20 @@ def remove_product(products):
     Args:
         products (list): List of dictionaries containing product information.
     """
+    # Validation for when thers no products in the csv
     if not products:
         print("No products in inventory.")
         return
 
+    # Input product ID to remove
     product_id = input("Enter Product ID to remove: ")
+    # Find the product with the given ID
     product = next((p for p in products if p['Product ID'] == product_id), None)
- 
+
     if product:
         products.remove(product)
         print("Product removed successfully!")
+
     else:
         print("Product not found.")
 
@@ -201,11 +205,20 @@ def view_inventory(products):
     This function prints the product details in a formatted manner.
         + the total no. of prod and the respective total value of the whole thing (Since assignment brief says so)
     """
+
+    # ANSI escape code for colors
+    blue_text = "\033[34m"
+    magneta_text = "\033[95m"
+
+    # ANSI escape code to reset color
+    reset = "\033[0m"
+
+    # Validation for when thers no products in the csv
     if not products:
         print("No products in inventory.")
         return
 
-    print("\n==== Current Inventory ====")
+    print(blue_text + "\n==== Current Inventory ====" + reset)
     for product in products:
         # ID
         print(f"\nProduct ID: {product['Product ID']}")
@@ -219,13 +232,13 @@ def view_inventory(products):
         print(f"Price: ${product['Price']:.2f}")
         # Quantity
         print(f"Quantity Available: {product['Quantity Available']}")
-        print("\n========================")
+        print(blue_text + "\n========================" + reset)
 
     # Calculate total value and no. of prod
-    print("\n==== Inventory Summary ====")
+    print(magneta_text + "\n==== Inventory Summary ====\n" + reset)
     print(f"Total number of products: {len(products)}")
 
     total_value = sum(p['Price'] * p['Quantity Available'] for p in products)
-    
-    print(f"Total inventory value: ${total_value:.2f}\n")
-    print("\n===========================")
+
+    print(f"Total inventory value: ${total_value:.2f}")
+    print(magneta_text + "\n===========================" + reset)

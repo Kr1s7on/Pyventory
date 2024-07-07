@@ -14,7 +14,7 @@
 
 # ANSI escape code for colors, extra marks for user experience pls
 YELLOW = "\033[93m"
-RED = "\033[91m"
+MAROON_HIGHLIGHT = "\033[48;5;1m\033[97m"
 
 # ANSI escape code to RESET color
 RESET = "\033[0m"
@@ -33,7 +33,7 @@ def search_inv(products):
         return
 
     # Input to search, I use .lower() to make it case-insensitive so that the results are not case-sensitive
-    search_term = input("Enter search term: ").lower()
+    search_term = input("\nEnter search term: ").lower()
     results = [
                 # Search for the search term in the product name and description
                 p for p in products if search_term in p['Product Name'].lower()
@@ -47,12 +47,12 @@ def search_inv(products):
             print(f"\nProduct ID: {product['Product ID']}") # ID
             print(f"Product Name: {product['Product Name']}") # Name
             print("-" * 10)
-            print(f"\nCategory: {product['Category']}") # Category
+            print(f"Category: {product['Category']}") # Category
             print(f"Description: {product['Description']}") # Description
             print("-" * 10)
-            print(f"\nPrice: ${product['Price']:.2f}") # Price
+            print(f"Price: ${product['Price']:.2f}") # Price
             print(f"Quantity Available: {product['Quantity Available']}") # Quantity
             print(YELLOW + "\n========================" + RESET)
 
     else:
-        print(RED + "No products found matching the search term." + RESET)
+        print(MAROON_HIGHLIGHT + "No products found matching the search term." + RESET)

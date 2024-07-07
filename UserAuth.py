@@ -20,6 +20,14 @@ import getpass
 # File path for passwords
 PASSWORDS_FILE = ".passwords.txt"
 
+# ANSI escape code for colors, extra marks for user experience pls
+YELLOW = "\033[93m"
+GREEN = "\033[92m"
+RED = "\033[91m"
+
+# ANSI escape code to RESET color
+RESET = "\033[0m"
+
 def login():
     """
     Perform user login.
@@ -28,24 +36,16 @@ def login():
         bool: True if login is successful, False otherwise.
     """
 
-    # ANSI escape code for colors, extra marks for user experience pls
-    yellow_gold_text = "\033[93m"
-    green_text = "\033[92m"
-    red_text = "\033[91m"
-
-    # ANSI escape code to reset color
-    reset = "\033[0m"
-
-    print(yellow_gold_text + "┌───────────────────────────────────────────────────┐" + reset)
-    print(yellow_gold_text + "│                                                   │" + reset)
-    print(yellow_gold_text + "│  ____                        _                    │" + reset)
-    print(yellow_gold_text + "│ |  _ \\ _   ___   _____ _ __ | |_ ___  _ __ _   _  │" + reset)
-    print(yellow_gold_text + "│ | |_) | | | \\ \\ / / _ \\ '_ \\| __/ _ \\| '__| | | | │" + reset)
-    print(yellow_gold_text + "│ |  __/| |_| |\\ V /  __/ | | | || (_) | |  | |_| | │" + reset)
-    print(yellow_gold_text + "│ |_|    \\__, | \\_/ \\___|_| |_|\\__\\___/|_|   \\__, | │" + reset)
-    print(yellow_gold_text + "│        |___/                               |___/  │" + reset)
-    print(yellow_gold_text + "│                                                   │" + reset)
-    print(yellow_gold_text + "└───────────────────────────────────────────────────┘" + reset)
+    print(YELLOW + "┌───────────────────────────────────────────────────┐" + RESET)
+    print(YELLOW + "│                                                   │" + RESET)
+    print(YELLOW + "│  ____                        _                    │" + RESET)
+    print(YELLOW + "│ |  _ \\ _   ___   _____ _ __ | |_ ___  _ __ _   _  │" + RESET)
+    print(YELLOW + "│ | |_) | | | \\ \\ / / _ \\ '_ \\| __/ _ \\| '__| | | | │" + RESET)
+    print(YELLOW + "│ |  __/| |_| |\\ V /  __/ | | | || (_) | |  | |_| | │" + RESET)
+    print(YELLOW + "│ |_|    \\__, | \\_/ \\___|_| |_|\\__\\___/|_|   \\__, | │" + RESET)
+    print(YELLOW + "│        |___/                               |___/  │" + RESET)
+    print(YELLOW + "│                                                   │" + RESET)
+    print(YELLOW + "└───────────────────────────────────────────────────┘" + RESET)
 
     username = input("\nEnter username: ")
     password = getpass.getpass("Enter password: ")  # Hide the password input with getpass
@@ -56,8 +56,8 @@ def login():
             stored_username, stored_password = line.strip().split(':')
 
         if username == stored_username and password == stored_password:
-            print(green_text + "\nLogin successful!" + reset)
+            print(GREEN + "\nLogin successful!" + RESET)
             return True
 
-    print(red_text + "\nAre you even an admin? Invalid username or password.\n" + reset)
+    print(RED + "\nAre you even an admin? Invalid username or password.\n" + RESET)
     return False

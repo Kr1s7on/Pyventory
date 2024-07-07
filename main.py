@@ -17,9 +17,17 @@
 # Import necessary modules
 from CSVHandler import load_products, save_products
 from InventoryManagement import add_product, update_product, remove_product, view_inventory
-from SearchEngine import search_product
+from SearchEngine import search_inv
 from UserAuth import login
 from GreetUser import greet_user
+
+# ANSI escape code for colors
+YELLOW = "\033[93m"
+LIGHT_BLUE = "\033[94m"
+RED = "\033[91m"
+
+# ANSI escape code to RESET color
+RESET = "\033[0m"
 
 def main():
     """
@@ -36,23 +44,18 @@ def main():
 
     The user can also choose to exit the program.
     """
-    # ANSI escape code for colors, extra marks for user experience pls
-    yellow_gold_text = "\033[93m"
-    blue_text = "\033[96m"
-    red_text = "\033[91m"
-
-    # ANSI escape code to reset color
-    reset = "\033[0m"
 
     if not login():
         return
 
-    print(greet_user())  # Greet the user
+    # print(greet_user())  # Greet the user
 
     products = load_products()  # Call from CSVHandler
 
     while True:
-        print(yellow_gold_text + "\n============== Pyventory ===============\n" + reset)
+        print(YELLOW + "\n\n============== Pyventory ===============\n" + RESET)
+        print(LIGHT_BLUE + greet_user() + RESET)
+        print("\n")
         print("1. Add new product")
         print("2. Update existing product")
         print("3. Remove product")
@@ -60,7 +63,7 @@ def main():
         print("5. Search product")
         print("6. Exit")
 
-        choice = input(blue_text + "\nEnter your choice (1-6): " + reset)
+        choice = input(LIGHT_BLUE + "\nWhat would you like to do (1-6)? " + RESET)
 
         if choice == '1':
             add_product(products)
@@ -75,15 +78,15 @@ def main():
             view_inventory(products)
 
         elif choice == '5':
-            search_product(products)
+            search_inv(products)
 
         elif choice == '6':
             save_products(products)  # Call from CSVHandler
-            print(yellow_gold_text + "\nThank you for using Pyventory. Goodbye!" + reset)
+            print(YELLOW + "\nThank you for using Pyventory. Goodbye!" + RESET)
             break
 
         else:
-            print(red_text + "\nWrong choice bruh! Please try again." + reset)
+            print(RED + "\nWRONG choice! Please try again." + RESET)
 
 # This is the entry point of the program
 if __name__ == "__main__":

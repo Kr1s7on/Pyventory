@@ -17,6 +17,17 @@
 # List of predefined categories
 CATEGORIES = ["Electronics", "Mobile Devices", "Accessories", "Home Appliance"]
 
+# ANSI escape code for colors
+RED = "\033[91m"
+GREEN = "\033[92m"
+BLUE = "\033[34m"
+MAGNETA = "\033[95m"
+GREEN_HIGHLIGHT = "\033[48;5;22m\033[37m"
+MAROON_HIGHLIGHT = "\033[48;5;1m\033[97m"
+
+# ANSI escape code to RESET color
+RESET = "\033[0m"
+
 def add_product(products):
     """
     Add a new product to the inventory.
@@ -24,40 +35,48 @@ def add_product(products):
     Args:
         products (list): List of dictionaries containing product information.
     """
-    print("\nAdding a new product:")
+    print("\nAdding a new product")
+    print("========================")
 
     # Input ID with validation
     while True:
-        product_id = input("Enter Product ID: ")
-        if any(p['Product ID'] == product_id for p in products):
-            print("Product ID already exists. Please enter a unique ID.")
+        product_id = input("\nEnter Product ID: ")
+
+        if not product_id.strip():
+            print(RED + "\nProduct ID cannot be blank." + RESET)
+
+        elif not product_id.isdigit():
+            print(RED + "\nProduct ID must be numeric." + RESET)
+
+        elif any(p['Product ID'] == product_id for p in products):
+            print(RED + "\nProduct ID already exists. Please enter a unique ID." + RESET)
 
         else:
             break
 
     # Input name with validation
     while True:
-        name = input("Enter Product Name: ")
+        name = input("\nEnter Product Name: ")
         # When name is empty
         if name == "":
-            print("Product Name cannot be empty. Please enter a name.")
+            print(RED + "\nProduct Name cannot be empty. Please enter a name." + RESET)
 
         else:
             break
 
     # Input category with validation
     while True:
-        category = input(f"Enter Category {CATEGORIES}: ")
+        category = input(f"\nEnter Category {CATEGORIES}: ")
         if category in CATEGORIES:
             break
-        print("Invalid category. Please choose from the list.")
+        print(RED + "\nInvalid category. Please choose from the list." + RESET)
 
     # Input description with validation
     while True:
-        description = input("Enter Description: ")
+        description = input("\nEnter Description: ")
         # When desc is empty
         if description == "":
-            print("Description cannot be empty. Please enter a description.")
+            print(RED + "\nDescription cannot be empty. Please enter a description." + RESET)
 
         else:
             break
@@ -65,20 +84,20 @@ def add_product(products):
     # Input price with validation
     while True:
         try:
-            price = float(input("Enter Price: "))
+            price = float(input("\nEnter Price: "))
             break
 
         except ValueError:
-            print("Invalid price. Please enter a number.")
+            print(RED + "\nInvalid price. Please enter a number." + RESET)
 
     # Input quantity with validation
     while True:
         try:
-            quantity = int(input("Enter Quantity Available: "))
+            quantity = int(input("\nEnter Quantity Available: "))
             break
 
         except ValueError:
-            print("Invalid quantity. Please enter a whole number.")
+            print(RED + "\nInvalid quantity. Please enter a whole number." + RESET)
 
     # Create new product dictionary and add to list
     new_product = {
@@ -92,7 +111,8 @@ def add_product(products):
 
     # Append the new product to the list
     products.append(new_product)
-    print("Product added successfully!")
+    print("\n========================")
+    print(GREEN_HIGHLIGHT + "Product added successfully!" + RESET)
 
 def update_product(products):
     """
@@ -101,13 +121,15 @@ def update_product(products):
     Args:
         products (list): List of dictionaries containing product information.
     """
+
     # Validation for when thers no products in the csv
     if not products:
-        print("No products in inventory.")
+        print(RED + "No products in inventory." + RESET)
         return
 
     # Input product ID to update
     product_id = input("Enter Product ID to update: ")
+
     # Find the product with the given ID
     product = next((p for p in products if p['Product ID'] == product_id), None)
 
@@ -119,17 +141,6 @@ def update_product(products):
 
         # Input name
         name = input(f"Product Name [{product['Product Name']}]: ") or product['Product Name']
-
-        # ================================================================================= EDIT
-        # # Input name with validation
-        # while True:
-        #     name = input("Enter Product Name: ")
-        #     if name == "":
-        #         print("Product Name cannot be empty. Please enter a name.")
-
-        #     else:
-        #         break
-        # ================================================================================= END
 
         # Input categories with validation
         while True:
@@ -170,10 +181,10 @@ def update_product(products):
             'Price': price,
             'Quantity Available': quantity
         })
-        print("Product updated successfully!")
+        print(GREEN + "Product updated successfully!" + RESET)
 
     else:
-        print("Product not found.")
+        print(MAROON_HIGHLIGHT + "Product not found." + RESET)
 
 def remove_product(products):
     """
@@ -182,22 +193,24 @@ def remove_product(products):
     Args:
         products (list): List of dictionaries containing product information.
     """
+
     # Validation for when thers no products in the csv
     if not products:
         print("No products in inventory.")
         return
 
     # Input product ID to remove
-    product_id = input("Enter Product ID to remove: ")
+    product_id = input(RED + "\nEnter Product ID to remove: " + RESET)
     # Find the product with the given ID
     product = next((p for p in products if p['Product ID'] == product_id), None)
 
     if product:
+        # Remove the product from the csv
         products.remove(product)
-        print("Product removed successfully!")
+        print(GREEN_HIGHLIGHT + "Product removed successfully!" + RESET)
 
     else:
-        print("Product not found.")
+        print(MAROON_HIGHLIGHT + "Product not found." + RESET)
 
 def view_inventory(products):
     """
@@ -207,42 +220,35 @@ def view_inventory(products):
         products (list): List of dictionaries containing product information.
 
     This function prints the product details in a formatted manner.
-        + the total no. of prod and the respective total value of the whole thing (Since assignment brief says so)
+    + total no. of prod and respective total value of the whole thing
     """
-
-    # ANSI escape code for colors
-    blue_text = "\033[34m"
-    magneta_text = "\033[95m"
-
-    # ANSI escape code to reset color
-    reset = "\033[0m"
 
     # Validation for when thers no products in the csv
     if not products:
         print("No products in inventory.")
         return
 
-    print(blue_text + "\n==== Current Inventory ====" + reset)
+    print(BLUE + "\n==== Current Inventory ====" + RESET)
     for product in products:
         # ID
         print(f"\nProduct ID: {product['Product ID']}")
         # Name
         print(f"Product Name: {product['Product Name']}")
         # Category
-        print(f"Category: {product['Category']}")
+        print(f"\nCategory: {product['Category']}")
         # Description
         print(f"Description: {product['Description']}")
         # Price
-        print(f"Price: ${product['Price']:.2f}")
+        print(f"\nPrice: ${product['Price']:.2f}")
         # Quantity
         print(f"Quantity Available: {product['Quantity Available']}")
-        print(blue_text + "\n========================" + reset)
+        print(BLUE + "\n========================" + RESET)
 
     # Calculate total value and no. of prod
-    print(magneta_text + "\n==== Inventory Summary ====\n" + reset)
+    print(MAGNETA + "\n==== Inventory Summary ====\n" + RESET)
     print(f"Total number of products: {len(products)}")
 
     total_value = sum(p['Price'] * p['Quantity Available'] for p in products)
 
     print(f"Total inventory value: ${total_value:.2f}")
-    print(magneta_text + "\n===========================" + reset)
+    print(MAGNETA + "\n===========================" + RESET)

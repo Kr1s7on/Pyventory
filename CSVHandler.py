@@ -38,12 +38,15 @@ def load_products():
 
         with open(PRODUCTS_FILE, 'r', encoding='utf-8') as file:
 
+            # Read the CSV file and store the data in a dictionary to be appended to the products list
             reader = csv.DictReader(file)
 
+            # Iterate through the rows in the CSV file
             for row in reader:
                 # Converts the price and quantity to appropriate types so that they can be used in calculations (the total stats basically)
                 row['Price'] = float(row['Price'])
                 row['Quantity Available'] = int(row['Quantity Available'])
+                # Append the row to the products list
                 products.append(row)
 
     return products

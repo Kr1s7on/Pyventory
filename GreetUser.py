@@ -21,7 +21,7 @@ def greet_user():
     """
     Greets the user based on the current time of day.
 
-    I don't think anyone else did this, so extra marks pls cher :D (I need to pullup my grade for this module)
+    I don't think anyone else did this, so extra marks pls cher :) (I need to pullup my grade for this module)
 
     Returns:
         A greeting message for the user.
@@ -30,7 +30,7 @@ def greet_user():
     current_time = datetime.datetime.now()
     hour = current_time.hour
 
-    if hour < 12:
+    if hour < 11:
         greeting = "\nGood morning!"
 
     elif hour < 18:

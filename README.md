@@ -8,9 +8,9 @@ An inventory management system in Python. And yes the words *Python* and *invent
 
 Besides the standard CRUD functionalities and the additional features mentioned in the [assignment brief](AssignmentBrief.pdf), these are something extra:
 
-- **Search Engine:** Implement a search functionality for products.
-- **Login (Basic):** Add a basic login page for user authentication.
-- **Data Storage (CSV):** Store product data in CSV format for persistence.
+- **Search Engine:** A search functionality for products.
+- **Login (Basic):** Basic login page for user authentication.
+- **Data Storage (CSV):** Product data is stored in CSV format for persistence.
 - **User Experience?** Not exactly a feature, but the idea is present througout the whole program, from using appropriate whitespace, to colored text, etc.
 
 ## Installation

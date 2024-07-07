@@ -14,20 +14,20 @@
 └───────────────────────────────────────────────────┘
 """
 
-def search_product(products):
+# ANSI escape code for colors, extra marks for user experience pls
+YELLOW = "\033[93m"
+RED = "\033[91m"
+
+# ANSI escape code to RESET color
+RESET = "\033[0m"
+
+def search_inv(products):
     """
     Search for a product in the inventory.
 
     Args:
         products (list): List of dictionaries containing the product info.
     """
-
-    # ANSI escape code for colors, extra marks for user experience pls
-    yellow_gold_text = "\033[93m"
-    red_text = "\033[91m"
-
-    # ANSI escape code to reset color
-    reset = "\033[0m"
 
     # Check whether there is any product in the inventory, no prod = return
     if not products:
@@ -43,21 +43,18 @@ def search_product(products):
             ]
 
     if results:
-        print(yellow_gold_text + "\n==== Search Results ====" + reset)
+        print(YELLOW + "\n==== Search Results ====" + RESET)
         for product in results:
-            # ID
-            print(f"\nProduct ID: {product['Product ID']}")
-            # Name
-            print(f"Product Name: {product['Product Name']}")
-            # Category
-            print(f"Category: {product['Category']}")
-            # Description
-            print(f"Description: {product['Description']}")
-            # Price
-            print(f"Price: ${product['Price']:.2f}")
-            # Quantity
-            print(f"Quantity Available: {product['Quantity Available']}")
-            print(yellow_gold_text + "\n========================" + reset)
+            
+            print(f"\nProduct ID: {product['Product ID']}") # ID
+            print(f"Product Name: {product['Product Name']}") # Name
+            print("-" * 10)
+            print(f"\nCategory: {product['Category']}") # Category
+            print(f"Description: {product['Description']}") # Description
+            print("-" * 10)
+            print(f"\nPrice: ${product['Price']:.2f}") # Price
+            print(f"Quantity Available: {product['Quantity Available']}") # Quantity
+            print(YELLOW + "\n========================" + RESET)
 
     else:
-        print(red_text + "No products found matching the search term." + reset)
+        print(RED + "No products found matching the search term." + RESET)

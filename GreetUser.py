@@ -17,6 +17,15 @@
 # Import the datetime module
 import datetime
 
+# ANSI color codes
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+LIGHT_BLUE = "\033[94m"
+
+# ANSI escape code to RESET color
+RESET = "\033[0m"
+
+
 def greet_user():
     """
     Greets the user based on the current time of day.
@@ -31,12 +40,12 @@ def greet_user():
     hour = current_time.hour
 
     if hour < 11:
-        greeting = "\nGood morning!"
+        greeting = GREEN + "\nGood morning!" + RESET
 
     elif hour < 18:
-        greeting = "\nGood afternoon!"
+        greeting = YELLOW + "\nGood afternoon!" + RESET
 
     else:
-        greeting = "\nGood evening!"
+        greeting = LIGHT_BLUE + "\nGood evening!" + RESET
 
     return greeting

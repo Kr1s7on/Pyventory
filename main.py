@@ -54,7 +54,7 @@ def main():
 
     while True:
         print(YELLOW + "\n\n============== Pyventory ===============\n" + RESET)
-        print(LIGHT_BLUE + greet_user() + RESET)
+        print(greet_user())
         print("\n")
         print("1. Add new product")
         print("2. Update existing product")

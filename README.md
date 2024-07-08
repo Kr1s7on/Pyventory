@@ -11,7 +11,7 @@ Besides the standard CRUD functionalities and the additional features mentioned 
 - **Search Engine:** A search functionality for products.
 - **Login (Basic):** Basic login page for user authentication.
 - **Data Storage (CSV):** Product data is stored in CSV format for persistence.
-- **User Experience?** Not exactly a feature, but the idea is present througout the whole program, from using appropriate whitespace, to colored text, etc.
+- **User Experience?** Not exactly a feature, but the idea is present throughout the whole program, from using appropriate whitespace, to colored text, etc.
 
 ## Installation
 

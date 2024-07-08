@@ -133,7 +133,7 @@ def update_product(products):
 
     # If product is found, update the details
     if product:
-        print("\nCurrent product details:")
+        print("\n============ Current product details ============")
         print(product)
         print("\nEnter new details (press Enter to keep current value):")
 
@@ -146,7 +146,8 @@ def update_product(products):
             if category in CATEGORIES:
                 break
 
-            print("Invalid category. Please choose from the list.")
+            print(MAROON_HIGHLIGHT + "Invalid category. Please choose from the list." + RESET)
+            print("\n")
 
         # Input description
         description = input(f"Description [{product['Description']}]: ") or product['Description']
@@ -159,7 +160,8 @@ def update_product(products):
                 break
 
             except ValueError:
-                print("Invalid price. Please enter a number.")
+                print(MAROON_HIGHLIGHT + "Invalid price. Please enter a number." + RESET)
+                print("\n")
 
         # Input quantity with validation
         while True:
@@ -169,7 +171,8 @@ def update_product(products):
                 break
 
             except ValueError:
-                print("Invalid quantity. Please enter a whole number.")
+                print(MAROON_HIGHLIGHT + "Invalid quantity. Please enter a whole number." + RESET)
+                print("\n")
 
         # Update product
         product.update({

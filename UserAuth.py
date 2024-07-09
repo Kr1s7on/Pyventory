@@ -51,9 +51,9 @@ def login():
     with open(PASSWORDS_FILE, 'r', encoding='utf-8') as file:
         for line in file:
             # Split the line into username and password by : (Wow this is so secure)
-            stored_username, stored_password = line.strip().split(':')
+            infile_username, infile_password = line.strip().split(':')
 
-        if username == stored_username and password == stored_password:
+        if username == infile_username and password == infile_password:
             print(GREEN + "\nLogin successful!" + RESET)
             return True
 

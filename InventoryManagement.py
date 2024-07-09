@@ -140,7 +140,8 @@ def update_product(products):
         print(YELLOW + "============ Current product details ============" + RESET)
         print(product)
         print("\n")
-        print(YELLOW_HIGHLIGHT + "Enter new details (press Enter to keep current value)" + RESET)
+        print(YELLOW + "Entering new details..." + RESET)
+        print(YELLOW_HIGHLIGHT + "(press ENTER to keep the original)" + RESET)
 
         # Input name
         name = input(f"\nProduct Name [{product['Product Name']}]: ") or product['Product Name']
@@ -235,7 +236,7 @@ def view_inventory(products):
         print("No products in inventory.")
         return
 
-    print(BLUE + "\n==== Current Inventory ====" + RESET)
+    print(BLUE + "\n=============== Current Inventory ===============" + RESET)
     for product in products:
         # ID
         print(f"\nProduct ID: {product['Product ID']}")
@@ -249,13 +250,13 @@ def view_inventory(products):
         print(f"\nPrice: ${product['Price']:.2f}")
         # Quantity
         print(f"Quantity Available: {product['Quantity Available']}")
-        print(BLUE + "\n========================" + RESET)
+        print(BLUE + "\n================================================" + RESET)
 
     # Calculate total value and no. of prod
-    print(MAGNETA + "\n==== Inventory Summary ====\n" + RESET)
+    print(MAGNETA + "\n======= Inventory Summary =======\n" + RESET)
     print(f"Total number of products: {len(products)}")
 
     total_value = sum(p['Price'] * p['Quantity Available'] for p in products)
 
     print(f"Total inventory value: ${total_value:.2f}")
-    print(MAGNETA + "\n===========================" + RESET)
+    print(MAGNETA + "\n=================================" + RESET)

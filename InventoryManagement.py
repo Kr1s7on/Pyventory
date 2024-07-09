@@ -19,9 +19,11 @@ CATEGORIES = ["Electronics", "Mobile Devices", "Accessories", "Home Appliance"]
 RED = "\033[91m"
 GREEN = "\033[92m"
 BLUE = "\033[34m"
+YELLOW = "\033[93m"
 MAGNETA = "\033[95m"
 GREEN_HIGHLIGHT = "\033[48;5;22m\033[37m"
 MAROON_HIGHLIGHT = "\033[48;5;1m\033[97m"
+YELLOW_HIGHLIGHT = "\033[30;43m"
 
 # ANSI escape code to RESET color
 RESET = "\033[0m"
@@ -126,6 +128,7 @@ def update_product(products):
         return
 
     # Input product ID to update
+    print("\n")
     product_id = input("Enter Product ID to update: ")
 
     # Find the product with the given ID
@@ -133,16 +136,18 @@ def update_product(products):
 
     # If product is found, update the details
     if product:
-        print("\n============ Current product details ============")
+        print("\n")
+        print(YELLOW + "============ Current product details ============" + RESET)
         print(product)
-        print("\nEnter new details (press Enter to keep current value):")
+        print("\n")
+        print(YELLOW_HIGHLIGHT + "Enter new details (press Enter to keep current value)" + RESET)
 
         # Input name
-        name = input(f"Product Name [{product['Product Name']}]: ") or product['Product Name']
+        name = input(f"\nProduct Name [{product['Product Name']}]: ") or product['Product Name']
 
         # Input categories with validation
         while True:
-            category = input(f"Category {CATEGORIES} [{product['Category']}]: ") or product['Category']
+            category = input(f"\nCategory {CATEGORIES} [{product['Category']}]: ") or product['Category']
             if category in CATEGORIES:
                 break
 
@@ -150,11 +155,11 @@ def update_product(products):
             print("\n")
 
         # Input description
-        description = input(f"Description [{product['Description']}]: ") or product['Description']
+        description = input(f"\nDescription [{product['Description']}]: ") or product['Description']
 
         # Input price with validation
         while True:
-            price_input = input(f"Price [{product['Price']}]: ") or str(product['Price'])
+            price_input = input(f"\nPrice [{product['Price']}]: ") or str(product['Price'])
             try:
                 price = float(price_input)
                 break
@@ -165,7 +170,7 @@ def update_product(products):
 
         # Input quantity with validation
         while True:
-            quantity_input = input(f"Quantity Available [{product['Quantity Available']}]: ") or str(product['Quantity Available'])
+            quantity_input = input(f"\nQuantity Available [{product['Quantity Available']}]: ") or str(product['Quantity Available'])
             try:
                 quantity = int(quantity_input)
                 break
@@ -182,7 +187,8 @@ def update_product(products):
             'Price': price,
             'Quantity Available': quantity
         })
-        print(GREEN + "Product updated successfully!" + RESET)
+        print("\n")
+        print(GREEN_HIGHLIGHT + "Product updated successfully!" + RESET)
 
     else:
         print(MAROON_HIGHLIGHT + "Product not found." + RESET)

@@ -12,6 +12,36 @@
 # │                                                   │
 # └───────────────────────────────────────────────────┘
 
+"""
+InventoryManagement.py contains functions to manage the inventory.
+
+Operations include:
+- Adding a new product
+- Updating an existing product
+- Removing a product
+- Viewing the inventory
+
+The add_product() function:
+    1. prompts the user to enter product details,
+    2. validates the input,
+    3. adds the new product to the inventory.
+    
+The update_product() function:
+    1. prompts the user to enter the product ID to update,
+    2. finds the product with the given ID,
+    3. updates the product details.
+
+The remove_product() function:
+    1. prompts the user to enter the product ID to remove,
+    2. finds the product with the given ID,
+    3. removes the product from the inventory.
+
+The view_inventory() function:
+    1. displays all products in the inventory.
+    2. calculates the total value of the inventory.
+    3. displays the total number of products in the inventory.
+"""
+
 # List of predefined categories
 CATEGORIES = ["Electronics", "Mobile Devices", "Accessories", "Home Appliance"]
 
@@ -21,6 +51,7 @@ GREEN = "\033[92m"
 BLUE = "\033[34m"
 YELLOW = "\033[93m"
 MAGNETA = "\033[95m"
+PALE_ORANGE = "\033[38;5;208m"
 GREEN_HIGHLIGHT = "\033[48;5;22m\033[37m"
 MAROON_HIGHLIGHT = "\033[48;5;1m\033[97m"
 YELLOW_HIGHLIGHT = "\033[30;43m"
@@ -236,7 +267,7 @@ def view_inventory(products):
         print("No products in inventory.")
         return
 
-    print(BLUE + "\n=============== Current Inventory ===============" + RESET)
+    print(PALE_ORANGE + "\n=============== Current Inventory ===============" + RESET)
     for product in products:
         # ID
         print(f"\nProduct ID: {product['Product ID']}")
@@ -250,7 +281,7 @@ def view_inventory(products):
         print(f"\nPrice: ${product['Price']:.2f}")
         # Quantity
         print(f"Quantity Available: {product['Quantity Available']}")
-        print(BLUE + "\n================================================" + RESET)
+        print(PALE_ORANGE + "\n================================================" + RESET)
 
     # Calculate total value and no. of prod
     print(MAGNETA + "\n======= Inventory Summary =======\n" + RESET)

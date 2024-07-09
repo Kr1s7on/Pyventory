@@ -12,6 +12,10 @@
 # │                                                   │
 # └───────────────────────────────────────────────────┘
 
+"""
+This file contains the main function to run Pyventory.
+"""
+
 # Import necessary modules
 from CSVHandler import load_products, save_products
 from InventoryManagement import add_product, update_product, remove_product, view_inventory

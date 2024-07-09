@@ -12,6 +12,20 @@
 # │                                                   │
 # └───────────────────────────────────────────────────┘
 
+"""
+UserAuth.py contains the login() function to perform user login. 
+
+Uses getpass to hide the password input because security ofc.
+
+The login() function:
+    1. prompts the user to enter a username and password,
+    2. reads the username and password from a file,
+    3. checks if the entered username and password match the stored credentials.
+
+Returns:
+    bool: True if login is successful, False otherwise.
+"""
+
 # Import necessary modules
 import getpass
 

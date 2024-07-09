@@ -12,6 +12,14 @@
 # │                                                   │
 # └───────────────────────────────────────────────────┘
 
+"""
+GreetUser.py contains the greet_user() function to greet the user based on the current time of day.
+
+The greet_user() function:
+    1. gets the current time of day using the datetime module,
+    2. greets the user based on the time of day.
+"""
+
 # Import the datetime module
 import datetime
 
@@ -28,7 +36,7 @@ def greet_user():
     """
     Greets the user based on the current time of day.
 
-    I don't think anyone else did this, so extra marks pls cher :) (I need to pullup my grade for this module)
+    User experience is important.
 
     Returns:
         A greeting message for the user.

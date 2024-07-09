@@ -13,7 +13,11 @@
 # └───────────────────────────────────────────────────┘
 
 """
-This file contains functions to handle CSV file operations.
+CSVHandler.py contains functions to handle CSV file operations.
+
+Operations include:
+- Loading the products from the CSV file
+- && Saving them after any changes are made
 """
 
 # Import libraries
@@ -38,12 +42,12 @@ def load_products():
 
         with open(PRODUCTS_FILE, 'r', encoding='utf-8') as file:
 
-            # Read the CSV file and store the data in a dictionary to be appended to the products list
+            # Read CSV file and store the data in a dictionary to be appended to the products list
             reader = csv.DictReader(file)
 
             # Iterate through the rows in the CSV file
             for row in reader:
-                # Converts the price and quantity to appropriate types so that they can be used in calculations (the total stats basically)
+                # Converts to price(float) & quantity(int) -> used in calculations
                 row['Price'] = float(row['Price'])
                 row['Quantity Available'] = int(row['Quantity Available'])
                 # Append the row to the products list

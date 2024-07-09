@@ -12,6 +12,16 @@
 # │                                                   │
 # └───────────────────────────────────────────────────┘
 
+"""
+SearchEngine.py contains the search_inv() function to search for a product in the inventory.
+
+The search_inv() function:
+    1. takes in a list of dictionaries containing the product information,
+    2. prompts user to enter a search term.
+    3. searches for the term in the product name and description.
+    4. Finally, it displays the search results if any products match the search term.
+"""
+
 # ANSI escape code for colors, extra marks for user experience pls
 YELLOW = "\033[93m"
 MAROON_HIGHLIGHT = "\033[48;5;1m\033[97m"
@@ -29,10 +39,10 @@ def search_inv(products):
 
     # Check whether there is any product in the inventory, no prod = return
     if not products:
-        print("No products in inventory.")
+        print(MAROON_HIGHLIGHT + "No products in inventory." + RESET)
         return
 
-    # Input to search, I use .lower() to make it case-insensitive so that the results are not case-sensitive
+    # Input to search, .lower() to make it case-insensitive -> results are not case-sensitive
     search_term = input("\nEnter search term: ").lower()
     results = [
                 # Search for the search term in the product name and description
@@ -40,19 +50,22 @@ def search_inv(products):
                 or search_term in p['Description'].lower()
             ]
 
+    # Results found
     if results:
         print(YELLOW + "\n==== Search Results ====" + RESET)
+
+        # For each product in the results, display the product info
         for product in results:
-            
             print(f"\nProduct ID: {product['Product ID']}") # ID
             print(f"Product Name: {product['Product Name']}") # Name
-            print("-" * 10)
+            print("----------")
             print(f"Category: {product['Category']}") # Category
             print(f"Description: {product['Description']}") # Description
-            print("-" * 10)
+            print("----------")
             print(f"Price: ${product['Price']:.2f}") # Price
             print(f"Quantity Available: {product['Quantity Available']}") # Quantity
             print(YELLOW + "\n========================" + RESET)
 
+    # No results
     else:
         print(MAROON_HIGHLIGHT + "No products found matching the search term." + RESET)

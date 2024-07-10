@@ -233,7 +233,7 @@ def remove_product(products):
         products (list): List of dictionaries containing product information.
     """
 
-    # Validation for when thers no products in the csv
+    # Validation for when there's no products in the csv
     if not products:
         print("No products in inventory.")
         return

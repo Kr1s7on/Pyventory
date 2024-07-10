@@ -284,10 +284,10 @@ def view_inventory(products):
         print(PALE_ORANGE + "\n================================================" + RESET)
 
     # Calculate total value and no. of prod
-    print(MAGNETA + "\n======= Inventory Summary =======\n" + RESET)
+    print(MAGNETA + "\n=============== Inventory Summary ==============\n" + RESET)
     print(f"Total number of products: {len(products)}")
 
     total_value = sum(p['Price'] * p['Quantity Available'] for p in products)
 
     print(f"Total inventory value: ${total_value:.2f}")
-    print(MAGNETA + "\n=================================" + RESET)
+    print(MAGNETA + "\n================================================" + RESET)

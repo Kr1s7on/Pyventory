@@ -31,7 +31,6 @@ LIGHT_BLUE = "\033[94m"
 # ANSI escape code to RESET color
 RESET = "\033[0m"
 
-
 def greet_user():
     """
     Greets the user based on the current time of day.

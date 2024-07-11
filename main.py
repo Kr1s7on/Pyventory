@@ -17,11 +17,11 @@ This file contains the main function to run Pyventory.
 """
 
 # Import necessary modules
-from CSVHandler import load_products, save_products
-from InventoryManagement import add_product, update_product, remove_product, view_inventory
-from SearchEngine import search_inv
-from UserAuth import login
-from GreetUser import greet_user
+from csv_handler import load_products, save_products
+from inventory_management import add_product, update_product, remove_product, view_inventory
+from search_engine import search_inv
+from user_auth import login
+from greet_user import greet_user
 
 # ANSI escape code for colors
 YELLOW = "\033[93m"
@@ -49,8 +49,6 @@ def main():
 
     if not login():
         return
-
-    # print(greet_user())  # Greet the user
 
     products = load_products()  # Call from CSVHandler
 

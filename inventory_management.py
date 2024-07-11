@@ -243,6 +243,11 @@ def remove_product(products):
     # Find the product with the given ID
     product = next((p for p in products if p['Product ID'] == product_id), None)
 
+    # if product:
+    #     # Remove the product from the csv
+    #     products.remove(product)
+    #     print(GREEN_HIGHLIGHT + "Product removed successfully!" + RESET)
+
     if product:
         # Remove the product from the csv
         products.remove(product)

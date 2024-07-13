@@ -81,7 +81,7 @@ def main():
             search_inv(products)
 
         elif choice == '6':
-            save_products(products)  # Call from CSVHandler
+            save_products(products)  # Saves products twice, just to be sure
             print(YELLOW + "\nThank you for using Pyventory. Goodbye!" + RESET)
             break
 

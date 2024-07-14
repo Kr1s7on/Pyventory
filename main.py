@@ -50,7 +50,7 @@ def main():
     if not login():
         return
 
-    products = load_products()  # Call from CSVHandler
+    products = load_products()  # Call from csv_handler.py
 
     while True:
         print(YELLOW + "\n\n============== Pyventory ===============\n" + RESET)

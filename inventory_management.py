@@ -76,13 +76,13 @@ def add_product(products):
         product_id = input("\nEnter Product ID: ")
 
         if not product_id.strip():
-            print(MAROON_HIGHLIGHT + "\nProduct ID cannot be blank." + RESET)
+            print(MAROON_HIGHLIGHT + "Product ID cannot be blank." + RESET)
 
         elif not product_id.isdigit():
-            print(MAROON_HIGHLIGHT + "\nProduct ID must be numeric." + RESET)
+            print(MAROON_HIGHLIGHT + "Product ID must be numeric." + RESET)
 
         elif any(p['Product ID'] == product_id for p in products):
-            print(MAROON_HIGHLIGHT + "\nProduct ID already exists. Please enter a unique ID." + RESET)
+            print(MAROON_HIGHLIGHT + "Product ID already exists. Please enter a unique ID." + RESET)
 
         else:
             break
@@ -92,7 +92,7 @@ def add_product(products):
         name = input("\nEnter Product Name: ")
         # When name is empty
         if name == "":
-            print(MAROON_HIGHLIGHT + "\nProduct Name cannot be empty. Please enter a name." + RESET)
+            print(MAROON_HIGHLIGHT + "Product Name cannot be empty. Please enter a name." + RESET)
 
         else:
             break
@@ -102,14 +102,14 @@ def add_product(products):
         category = input(f"\nEnter Category {CATEGORIES}: ")
         if category in CATEGORIES:
             break
-        print(MAROON_HIGHLIGHT + "\nInvalid category. Please choose from the list." + RESET)
+        print(MAROON_HIGHLIGHT + "Invalid category. Please choose from the list." + RESET)
 
     # Input description with validation
     while True:
         description = input("\nEnter Description: ")
         # When desc is empty
         if description == "":
-            print(MAROON_HIGHLIGHT + "\nDescription cannot be empty. Please enter a description." + RESET)
+            print(MAROON_HIGHLIGHT + "Description cannot be empty. Please enter a description." + RESET)
 
         else:
             break
@@ -124,7 +124,7 @@ def add_product(products):
             break
 
         except ValueError:
-            print(MAROON_HIGHLIGHT + "\nInvalid price. Please enter a number." + RESET)
+            print(MAROON_HIGHLIGHT + "Invalid price. Please enter a number." + RESET)
 
     # Input quantity with validation
     while True:
@@ -136,7 +136,7 @@ def add_product(products):
             break
 
         except ValueError:
-            print(MAROON_HIGHLIGHT + "\nInvalid quantity. Please enter a whole number." + RESET)
+            print(MAROON_HIGHLIGHT + "Invalid quantity. Please enter a whole number." + RESET)
 
     # Create new product dictionary and add to list
     new_product = {
@@ -193,7 +193,6 @@ def update_product(products):
                 break
 
             print(MAROON_HIGHLIGHT + "Invalid category. Please choose from the list." + RESET)
-            print("\n")
 
         # Input description
         description = input(f"\nDescription [{product['Description']}]: ") or product['Description']
@@ -223,7 +222,6 @@ def update_product(products):
 
             except ValueError:
                 print(MAROON_HIGHLIGHT + "Invalid quantity. Enter a whole number." + RESET)
-                print("\n")
 
         # Update product
         product.update({
@@ -236,7 +234,7 @@ def update_product(products):
         print("\n")
 
         save_products(products)
-        
+        print(YELLOW + "==============================================" + RESET)
         print(GREEN_HIGHLIGHT + "Product updated successfully!" + RESET)
 
     else:
@@ -256,7 +254,7 @@ def remove_product(products):
         return
 
     # Input product ID to remove
-    product_id = input(MAROON_HIGHLIGHT + "\nEnter Product ID to remove: " + RESET)
+    product_id = input(RED + "\nEnter Product ID to remove: " + RESET)
     # Find the product with the given ID
     product = next((p for p in products if p['Product ID'] == product_id), None)
 

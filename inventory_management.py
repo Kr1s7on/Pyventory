@@ -74,13 +74,15 @@ def add_product(products):
     # Input ID with validation
     while True:
         product_id = input("\nEnter Product ID: ")
-
+        # When ID is empty
         if not product_id.strip():
             print(MAROON_HIGHLIGHT + "Product ID cannot be blank." + RESET)
 
+        # When ID is not numeric
         elif not product_id.isdigit():
             print(MAROON_HIGHLIGHT + "Product ID must be numeric." + RESET)
 
+        # When ID already exists
         elif any(p['Product ID'] == product_id for p in products):
             print(MAROON_HIGHLIGHT + "Product ID already exists. Please enter a unique ID." + RESET)
 

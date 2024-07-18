@@ -13,7 +13,7 @@
 # └───────────────────────────────────────────────────┘
 
 """
-GreetUser.py contains the greet_user() function to greet the user based on the current time of day.
+greet_user.py contains the greet_user() function to greet the user based on the current time of day.
 
 The greet_user() function:
     1. gets the current time of day using the datetime module,

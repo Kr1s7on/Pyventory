@@ -13,7 +13,7 @@
 # └───────────────────────────────────────────────────┘
 
 """
-SearchEngine.py contains the search_inv() function to search for a product in the inventory.
+search_engine.py contains the search_inv() function to search for a product in the inventory.
 
 The search_inv() function:
     1. takes in a list of dictionaries containing the product information,

@@ -13,7 +13,7 @@
 # └───────────────────────────────────────────────────┘
 
 """
-UserAuth.py contains the login() function to perform user login. 
+user_auth.py contains the login() function to perform user login. 
 
 Uses getpass to hide the password input because security ofc.
 

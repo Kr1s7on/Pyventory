@@ -13,7 +13,7 @@
 # └───────────────────────────────────────────────────┘
 
 """
-CSVHandler.py contains functions to handle CSV file operations.
+csv_handler.py contains functions to handle CSV file operations.
 
 Operations include:
 - Loading the products from the CSV file

@@ -13,7 +13,7 @@
 # └───────────────────────────────────────────────────┘
 
 """
-InventoryManagement.py contains functions to manage the inventory.
+inventory_management.py contains functions to manage the inventory.
 
 Operations include:
 - Adding a new product

@@ -39,7 +39,7 @@ def search_inv(products):
 
     # Check whether there is any product in the inventory, no prod = return
     if not products:
-        print(MAROON_HIGHLIGHT + "No products in inventory." + RESET)
+        print(MAROON_HIGHLIGHT + "You don't seem to have any products in the inventory." + RESET)
         return
 
     # Input to search, .lower() to make it case-insensitive -> results are not case-sensitive
@@ -68,4 +68,4 @@ def search_inv(products):
 
     # No results
     else:
-        print(MAROON_HIGHLIGHT + "No products found matching the search term." + RESET)
+        print(MAROON_HIGHLIGHT + "I coudn't find anything relating the search term :(" + RESET)

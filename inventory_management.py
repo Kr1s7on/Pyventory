@@ -76,15 +76,15 @@ def add_product(products):
         product_id = input("\nEnter Product ID: ")
         # When ID is empty
         if not product_id.strip():
-            print(MAROON_HIGHLIGHT + "Product ID cannot be blank." + RESET)
+            print(MAROON_HIGHLIGHT + "The Product ID can't be blank :(" + RESET)
 
         # When ID is not numeric
         elif not product_id.isdigit():
-            print(MAROON_HIGHLIGHT + "Product ID must be numeric." + RESET)
+            print(MAROON_HIGHLIGHT + "The Product ID has to be numeric :(" + RESET)
 
         # When ID already exists
         elif any(p['Product ID'] == product_id for p in products):
-            print(MAROON_HIGHLIGHT + "Product ID already exists. Please enter a unique ID." + RESET)
+            print(MAROON_HIGHLIGHT + "The ID you entered is already being used :( Please enter something different." + RESET)
 
         else:
             break
@@ -94,7 +94,7 @@ def add_product(products):
         name = input("\nEnter Product Name: ")
         # When name is empty
         if name == "":
-            print(MAROON_HIGHLIGHT + "Product Name cannot be empty. Please enter a name." + RESET)
+            print(MAROON_HIGHLIGHT + "Every product has a name, why'd you leave it blank?" + RESET)
 
         else:
             break
@@ -104,14 +104,14 @@ def add_product(products):
         category = input(f"\nEnter Category {CATEGORIES}: ")
         if category in CATEGORIES:
             break
-        print(MAROON_HIGHLIGHT + "Invalid category. Please choose from the list." + RESET)
+        print(MAROON_HIGHLIGHT + "I don't think what you entered was in the predefined categories." + RESET)
 
     # Input description with validation
     while True:
         description = input("\nEnter Description: ")
         # When desc is empty
         if description == "":
-            print(MAROON_HIGHLIGHT + "Description cannot be empty. Please enter a description." + RESET)
+            print(MAROON_HIGHLIGHT + "'A picture speaks a thousand words...' Surely you could describe the product you're adding." + RESET)
 
         else:
             break
@@ -121,24 +121,24 @@ def add_product(products):
         try:
             price = float(input("\nEnter Price: "))
             if price < 0:
-                print(MAROON_HIGHLIGHT + "What world do you live in? How can price be -ve? Enter a +ve number." + RESET)
+                print(MAROON_HIGHLIGHT + "Surely you wouldn't want your business to go bankrupt? Enter a +ve number." + RESET)
                 continue
             break
 
         except ValueError:
-            print(MAROON_HIGHLIGHT + "Invalid price. Please enter a number." + RESET)
+            print(MAROON_HIGHLIGHT + "That isn't a proper price :(" + RESET)
 
     # Input quantity with validation
     while True:
         try:
             quantity = int(input("\nEnter Quantity Available: "))
             if quantity < 0:
-                print(MAROON_HIGHLIGHT + "What world do you live in? How can price be -ve? Enter a +ve number." + RESET)
+                print(MAROON_HIGHLIGHT + "Surely you wouldn't want your business to go bankrupt? Enter a +ve number." + RESET)
                 continue
             break
 
         except ValueError:
-            print(MAROON_HIGHLIGHT + "Invalid quantity. Please enter a whole number." + RESET)
+            print(MAROON_HIGHLIGHT + "Have you ever bought 1/4 of a laptop? Please enter a whole number." + RESET)
 
     # Create new product dictionary and add to list
     new_product = {
@@ -166,7 +166,7 @@ def update_product(products):
 
     # Validation for when thers no products in the csv
     if not products:
-        print(MAROON_HIGHLIGHT + "No products in inventory." + RESET)
+        print(MAROON_HIGHLIGHT + "You don't seem to have any products in the inventory." + RESET)
         return
 
     # Input product ID to update
@@ -194,7 +194,7 @@ def update_product(products):
             if category in CATEGORIES:
                 break
 
-            print(MAROON_HIGHLIGHT + "Invalid category. Please choose from the list." + RESET)
+            print(MAROON_HIGHLIGHT + "I don't think what you entered was in the predefined categories." + RESET)
 
         # Input description
         description = input(f"\nDescription [{product['Description']}]: ") or product['Description']
@@ -205,12 +205,12 @@ def update_product(products):
             try:
                 price = float(price_input)
                 if price < 0:
-                    print(MAROON_HIGHLIGHT + "What world do you live in? How can price be -ve? Enter a +ve number." + RESET)
+                    print(MAROON_HIGHLIGHT + "Surely you wouldn't want your business to go bankrupt? Enter a +ve number." + RESET)
                     continue
                 break
 
             except ValueError:
-                print(MAROON_HIGHLIGHT + "Invalid price. Enter a number." + RESET)
+                print(MAROON_HIGHLIGHT + "That isn't a proper price :(" + RESET)
 
         # Input quantity with validation
         while True:
@@ -218,12 +218,12 @@ def update_product(products):
             try:
                 quantity = int(quantity_input)
                 if quantity < 0:
-                    print(MAROON_HIGHLIGHT + "How do you have -ve quantity? Enter a +ve number." + RESET)
+                    print(MAROON_HIGHLIGHT + "Surely you wouldn't want your business to go bankrupt? Enter a +ve number." + RESET)
                     continue
                 break
 
             except ValueError:
-                print(MAROON_HIGHLIGHT + "Invalid quantity. Enter a whole number." + RESET)
+                print(MAROON_HIGHLIGHT + "Have you ever bought 1/4 of a laptop? Please enter a whole number." + RESET)
 
         # Update product
         product.update({
@@ -252,7 +252,7 @@ def remove_product(products):
 
     # Validation for when there's no products in the csv
     if not products:
-        print("No products in inventory.")
+        print("You don't seem to have any products in the inventory.")
         return
 
     # Input product ID to remove
@@ -263,11 +263,11 @@ def remove_product(products):
     if product:
         # Remove the product from the csv
         products.remove(product)
-        print(GREEN_HIGHLIGHT + "Product removed successfully!" + RESET)
+        print(GREEN_HIGHLIGHT + "You've successfully PURGED the product from the system!" + RESET)
         save_products(products)
 
     else:
-        print(MAROON_HIGHLIGHT + "Product not found." + RESET)
+        print(MAROON_HIGHLIGHT + "I couldn't find the product you're looking for... Maybe the ID is wrong?" + RESET)
 
 def view_inventory(products):
     """
@@ -282,7 +282,7 @@ def view_inventory(products):
 
     # Validation for when thers no products in the csv
     if not products:
-        print("No products in inventory.")
+        print("You don't seem to have any products in the inventory.")
         return
 
     print(PALE_ORANGE + "\n=============== Current Inventory ===============" + RESET)

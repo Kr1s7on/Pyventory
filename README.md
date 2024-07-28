@@ -35,7 +35,7 @@ Besides the standard CRUD functionalities and the additional features mentioned 
 
 ## Contributing
 
-Contributions are welcome. Please open an issue or submit a pull request.
+Feel free to fork for personal use and experimentation.
 
 ## License
 
